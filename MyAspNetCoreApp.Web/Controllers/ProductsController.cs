@@ -6,15 +6,30 @@ namespace MyAspNetCoreApp.Web.Controllers
     public class ProductsController : Controller
     {
 
+        private AppDbContext _context;
+
         private readonly ProductRepository _productRepository;
-        public ProductsController()
+        public ProductsController(AppDbContext context)
         {
+
             _productRepository = new ProductRepository();
+
+            _context = context;
+
+            if (!_context.Products.Any())
+            {
+                _context.Products.Add(new Product() { Name = "Kalem 1", Price = 100, Stock = 100 });
+                _context.Products.Add(new Product() { Name = "Kalem 2", Price = 100, Stock = 200 });
+                _context.Products.Add(new Product() { Name = "Kalem 3", Price = 100, Stock = 300 });
+
+                _context.SaveChanges();
+            }
+            
 
         }
         public IActionResult Index()
         {
-            var products = _productRepository.GetAll();
+            var products = _context.Products.ToList();
 
             return View(products);
         }
