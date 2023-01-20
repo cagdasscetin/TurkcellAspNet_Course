@@ -14,6 +14,9 @@
             <th>Fiyat</th>
             <th>Stok</th>
             <th>İşlem</th>
+            <th>Renk</th>
+            <th>En</th>
+            <th>Boy</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +27,9 @@
                 <td>@item.Name</td>
                 <td>@item.Price</td>
                 <td>@item.Stock</td>
+                <td>@item.Color</td>
+                <td>@item.Width</td>
+                <td>@item.Height</td>
                 <td>
                     <a asp-controller="products" asp-action="remove" asp-route-id="@item.Id">Sil</a>
                     <a asp-controller="products" asp-action="update" asp-route-id="@item.Id">Güncelle</a>
