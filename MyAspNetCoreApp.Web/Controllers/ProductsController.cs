@@ -50,6 +50,15 @@ namespace MyAspNetCoreApp.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult SaveProduct(Product newProduct)
+        {
+            _context.Products.Add(newProduct);
+            _context.SaveChanges();
+
+            return View();
+        }
+
         [HttpPost] // Datayi kaydedecek method budur. Post'larin sayfasi olmaz
         public IActionResult Add(Product newProduct)
         {
