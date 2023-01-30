@@ -5,9 +5,9 @@
 @model Product
 
 <h1>Ürün güncelleme</h1>
-<form asp-asp-controller="Products" asp-action="Update" method="post">
+<form asp-asp-controller="Products" asp-action="Update" asp-route-productId="@Model.Id" asp-route-type="type1" method="post">
 
-    <input type="hidden" asp-for="Id" />
+    @*<input type="hidden" asp-for="Id" />*@
 
     <label>Ürün İsmi: </label>
     <input type="text" asp-for="Name" />

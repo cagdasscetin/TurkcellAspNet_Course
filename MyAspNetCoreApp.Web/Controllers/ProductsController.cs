@@ -89,8 +89,10 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(Product updateProduct)
+        public IActionResult Update(Product updateProduct, int productId, string type)
         {
+            updateProduct.Id = productId;
+
             _context.Products.Update(updateProduct);
             _context.SaveChanges();
 
