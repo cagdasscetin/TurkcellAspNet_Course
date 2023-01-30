@@ -50,14 +50,14 @@ namespace MyAspNetCoreApp.Web.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult SaveProduct(Product newProduct)
-        {
-            _context.Products.Add(newProduct);
-            _context.SaveChanges();
+        //[HttpGet]
+        //public IActionResult SaveProduct(Product newProduct)
+        //{
+        //    _context.Products.Add(newProduct);
+        //    _context.SaveChanges();
 
-            return View();
-        }
+        //    return View();
+        //}
 
         [HttpPost] // Datayi kaydedecek method budur. Post'larin sayfasi olmaz
         public IActionResult Add(Product newProduct)
@@ -79,10 +79,20 @@ namespace MyAspNetCoreApp.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public IActionResult Update(int id)
         {
+            var product = _context.Products.Find(id);
+            return View(product);
+        }
 
-            return View();
+        [HttpPost]
+        public IActionResult Update(Product updateProduct)
+        {
+            _context.Products.Update(updateProduct);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
