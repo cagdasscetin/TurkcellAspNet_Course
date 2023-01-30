@@ -9,6 +9,5 @@
 
         public string? Color { get; set; }
 
-        public string? Barcode { get; set; }
     }
 }
