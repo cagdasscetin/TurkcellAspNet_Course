@@ -13,8 +13,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon"));
 });
 
-builder.Services.AddSingleton<IHelper, Helper>();
-
+//builder.Services.AddSingleton<IHelper, Helper>();
+//builder.Services.AddScoped<Helper>();
+//builder.Services.AddScoped<Helper>(sp => new Helper());
+builder.Services.AddScoped<IHelper, Helper>();
 
 var app = builder.Build();
 
