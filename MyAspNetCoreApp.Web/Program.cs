@@ -16,7 +16,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 //builder.Services.AddSingleton<IHelper, Helper>();
 //builder.Services.AddScoped<Helper>();
 //builder.Services.AddScoped<Helper>(sp => new Helper());
-builder.Services.AddScoped<IHelper, Helper>();
+//builder.Services.AddScoped<IHelper, Helper>();
+//builder.Services.AddTransient<IHelper, Helper>(sp=>
+//{
+//    return new Helper(true);
+
+//});
+builder.Services.AddTransient<IHelper, Helper>();
+
 
 var app = builder.Build();
 
